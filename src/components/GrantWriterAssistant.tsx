@@ -42,29 +42,30 @@ const GrantWriterAssistant = () => {
   };
 
   const { refetch, isFetching } = useQuery({
-    queryKey: ['grantContent'],
+    queryKey: ['grantContent', prompt],
     queryFn: () => generateGrantContent(prompt),
     enabled: false,
-    onSuccess: (data) => {
-      setResult(data);
-      toast({
-        title: "Grant content generated",
-        description: "Your grant proposal has been created successfully.",
-      });
-    },
-    onError: () => {
-      toast({
-        title: "Error",
-        description: "Failed to generate grant content. Please try again.",
-        variant: "destructive",
-      });
-    },
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (prompt.trim()) {
-      refetch();
+      try {
+        const data = await refetch();
+        if (data.data) {
+          setResult(data.data);
+          toast({
+            title: "Grant content generated",
+            description: "Your grant proposal has been created successfully.",
+          });
+        }
+      } catch (error) {
+        toast({
+          title: "Error",
+          description: "Failed to generate grant content. Please try again.",
+          variant: "destructive",
+        });
+      }
     } else {
       toast({
         title: "Input required",
