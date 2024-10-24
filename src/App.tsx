@@ -8,6 +8,7 @@ import { Logo } from "./components/Logo";
 import Landing from "./pages/Landing";
 import Contact from "./pages/Contact";
 import Auth from "./pages/Auth";
+import Settings from "./pages/Settings";
 import Index from "./pages/Index";
 
 const queryClient = new QueryClient();
@@ -36,6 +37,7 @@ const App = () => (
             <Route path="/grants" element={<Index />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/auth" element={<Auth />} />
+            <Route path="/settings" element={<Settings />} />
           </Routes>
         </Layout>
       </BrowserRouter>

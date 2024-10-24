@@ -1,4 +1,4 @@
-import { Home, Mail, FileText } from "lucide-react";
+import { Home, Mail, FileText, Settings, Rocket } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import {
   NavigationMenu,
@@ -29,8 +29,8 @@ export const Navigation = () => {
             className={cn(navigationMenuTriggerStyle(), "cursor-pointer")}
             onClick={() => navigate("/grants")}
           >
-            <FileText className="mr-2 h-4 w-4" />
-            Grants
+            <Rocket className="mr-2 h-4 w-4" />
+            AI Grants
           </NavigationMenuLink>
         </NavigationMenuItem>
         <NavigationMenuItem>
@@ -40,6 +40,15 @@ export const Navigation = () => {
           >
             <Mail className="mr-2 h-4 w-4" />
             Contact
+          </NavigationMenuLink>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <NavigationMenuLink
+            className={cn(navigationMenuTriggerStyle(), "cursor-pointer")}
+            onClick={() => navigate("/settings")}
+          >
+            <Settings className="mr-2 h-4 w-4" />
+            Settings
           </NavigationMenuLink>
         </NavigationMenuItem>
       </NavigationMenuList>
